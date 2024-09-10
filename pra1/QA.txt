@@ -1,0 +1,4 @@
+1. app_name/views.py
+2. urls.py
+3. django-admin startproject <project_name>
+4. py manage.py startapp <app_name>
