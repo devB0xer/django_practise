@@ -1,5 +1,21 @@
-.nav{
+.nav ul {
+    list-style: none;
     display: flex;
     flex-direction: row;
+    column-gap: 3vw;
+
+}
+
+.nav ul li a{
+    text-decoration: none;
+    border: 2px solid black;
+    padding: 0.4vw;
+    color: black;
+}
+
+.nav ul li a:hover{
+    border: 3px solid blue;
+    padding: 0.3vw;
+    color: blue;
     
 }
