@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+    <div class="book-detail">
+        <h1>{{book.title}}</h1>
+        <img src="{{book.image.url}}" alt="{{book.title}}">
+    </div>
+
+    <!-- not working corectly, idk how to fix it -->
+    {% if book.id not in cart.cart %} 
+        <a href="{% url 'cart_add' book.id %}"><button>Add to cart</button></a>
+    {% endif %}
+{% endblock %}

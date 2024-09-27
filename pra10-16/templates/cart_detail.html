@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+    <div class="cart_body">
+    {% for item in cart %}
+        <div class="item_cart">
+            <span>Amount: {{ item.quantity }}</span>
+            <span>Cost: {{ item.price }}</span>
+            <img src="{{ item.book.image.url }}" width="100px" width="100px">
+            <a href="{% url 'cart_addic' item.book.id %}"><button>+</button></a>
+            <a href="{% url 'cart_remove' item.book.id %}"><button>-</button></a>
+            <a href="{% url 'cart_remove_all' item.book.id %}"><button>delete</button></a>
+        </div>
+    {% endfor %}
+    </div>
+    <h2>Check: {{ cart.get_total_price }}</h2>
+
+    <div>
+        <div>
+            <h2>Make order</h2>
+        </div>
+        <form action="{% url 'create_order' %}" method="post">
+            {% csrf_token %}
+            {{ orderForm.as_p }}
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+
+{% endblock %}

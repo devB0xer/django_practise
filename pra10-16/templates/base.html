@@ -1,0 +1,30 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Django project{% endblock %}</title>
+    <link rel="stylesheet" href=" {% static 'style/style.css' %} ">
+</head>
+<body>
+    <header>
+        <div class="nav">
+            <ul>
+                <li><a href="{% url 'mainPage' %}">Main page</a></li>
+                <li><a href="{% url 'register' %}">Registration</a></li>
+                <li><a href="{% url 'login' %}">Login</a></li>
+                <li><a href="{% url 'account' %}">account</a></li>
+                <li><a href="{% url 'cart_detail' %}">Cart : {{cart|length}}</a></li>
+            </ul>
+        </div>
+    </header>
+
+    {% block content %}
+
+    
+
+    {% endblock %}
+</body>
+</html>

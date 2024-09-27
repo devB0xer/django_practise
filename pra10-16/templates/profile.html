@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+    <h2>User: {{ user.user.username }}</h2>
+    <h2>sex/gender: {{ user.gender }}</h2>
+    <h2>city: {{ user.city }}</h2>
+
+    <a href="{% url 'edit' %}"><button>edit profile</button></a>
+
+    <h2>orders:</h2>
+    {% if orders %}
+        <ul>
+            {% for order in orders %}
+                <li>
+                    <h3>Order {{ order.id }}:</h3>
+                    <p>order date: {{ order.order_date }}</p>
+                    <p>status: {{ order.status }}</p>
+                    <p>products:</p>
+                    <ul>
+                        {% for item in order.items.all %}
+                            <li>{{ item.quantity }} x '{{ item.book.title }}'</li>
+                        {% endfor %}
+                    </ul>
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>you don't have any orders</p>
+    {% endif %}
+
+{% endblock %}
